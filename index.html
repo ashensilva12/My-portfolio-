@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <!-- SEO & Meta Tags: Customize below -->
+  <meta name="description" content="Your Name - Modern, responsive portfolio website. Web developer, designer, and creator." />
+  <meta name="keywords" content="portfolio, web developer, frontend, HTML, CSS, JavaScript, projects" />
+  <meta name="author" content="Your Name" />
+  <meta property="og:title" content="Your Name | Portfolio" />
+  <meta property="og:description" content="Modern, responsive portfolio website." />
+  <meta property="og:image" content="assets/images/profile.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#6a82fb" />
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="loader" class="loader"></div>
+  <header>
+    <nav class="navbar">
+      <div class="logo">My Portfolio</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><button id="darkModeToggle" aria-label="Toggle dark mode"></button></li>
+      </ul>
+      <div class="hamburger" id="hamburger" tabindex="0" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </div>
+    </nav>
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+  </header>
+  <main>
+    <!--
+      Performance Tips:
+      - Use optimized/compressed images in assets/images/
+      - Minimize number of images and icons loaded
+      - Use SVGs for icons where possible
+      - Use rel="preload" for critical assets if needed
+    -->
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1><span id="typedName">Your Name</span></h1>
+          <p id="typedDesc">Web Developer | Frontend Enthusiast</p>
+          <div class="hero-socials">
+            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="hero-img">
+          <img src="images/profile.jpg" alt="Profile picture" id="profileImg" />
+          <!-- Floating elements -->
+          <span class="float-elem fe1"></span>
+          <span class="float-elem fe2"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="about-img">
+        <img src="assets/images/about.jpg" alt="About me" id="aboutImg" />
+      </div>
+      <div class="about-info">
+        <h2>About Me</h2>
+        <p id="aboutDesc">I am a passionate web developer with experience in building modern, responsive websites and web apps. I love creating beautiful and accessible user experiences.</p>
+        <div class="about-counters">
+          <div class="counter"><span id="yearsExp">0</span>+ Years Experience</div>
+          <div class="counter"><span id="projectsDone">0</span>+ Projects</div>
+          <div class="counter"><span id="clients">0</span>+ Clients</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+      <h2>Skills</h2>
+      <div class="skills-list">
+        <div class="skill"><i class="fab fa-html5"></i><span>HTML5</span></div>
+        <div class="skill"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
+        <div class="skill"><i class="fab fa-js"></i><span>JavaScript</span></div>
+        <div class="skill"><i class="fab fa-react"></i><span>React</span></div>
+        <div class="skill"><i class="fab fa-git-alt"></i><span>Git</span></div>
+        <!-- Add more skills as needed -->
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+      <h2>Projects</h2>
+      <div class="filter-buttons" id="filterButtons"></div>
+      <div class="project-list" id="projectList"></div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <h2>Contact Me</h2>
+      <form id="contactForm" novalidate>
+        <input type="text" id="name" name="name" placeholder="Your Name" required />
+        <input type="email" id="email" name="email" placeholder="Your Email" required />
+        <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+        <div class="form-message" id="formMessage" aria-live="polite"></div>
+      </form>
+      <div class="contact-info">
+        <p>Email: <a href="mailto:your@email.com" id="contactEmail">your@email.com</a></p>
+        <p>Location: <span id="contactLocation">Your City, Country</span></p>
+      </div>
+    </section>
+  </main>
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; <span id="footerYear"></span> Your Name. All rights reserved.</p>
+    <!--
+      Browser Support: Chrome, Firefox, Safari, Edge (latest)
+      - Uses modern, widely supported HTML5/CSS3/JS features
+      - For best results, keep assets compressed and avoid heavy libraries
+    -->
+  </footer>
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
+  <script src="script.js"></script>
+</body>
+</html>
