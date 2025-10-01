@@ -110,27 +110,51 @@ function lazyLoadImages() {
   });
 }
 
-// Contact form validation
+// Contact form removed: guard in case elements don't exist
 const contactForm = document.getElementById('contactForm');
-const formMessage = document.getElementById('formMessage');
-contactForm.addEventListener('submit', e => {
-  e.preventDefault();
-  const name = contactForm.name.value.trim();
-  const email = contactForm.email.value.trim();
-  const message = contactForm.message.value.trim();
-  if (!name || !email || !message) {
-    formMessage.textContent = 'Please fill in all fields.';
-    return;
+if (contactForm) {
+  const formMessage = document.getElementById('formMessage');
+  contactForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = contactForm.name.value.trim();
+    const email = contactForm.email.value.trim();
+    const message = contactForm.message.value.trim();
+    if (!name || !email || !message) {
+      formMessage.textContent = 'Please fill in all fields.';
+      return;
+    }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      formMessage.textContent = 'Please enter a valid email address.';
+      return;
+    }
+    formMessage.textContent = 'Sending...';
+    setTimeout(() => {
+      formMessage.textContent = 'Thank you for reaching out!';
+      contactForm.reset();
+    }, 1200);
+  });
+}
+
+// Footer year
+const footerYear = document.getElementById('footerYear');
+if (footerYear) footerYear.textContent = new Date().getFullYear();
+
+// Simple counter animation for About section
+function animateCounter(id, target, duration = 1200) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const start = 0; const startTime = performance.now();
+  function tick(now) {
+    const p = Math.min(1, (now - startTime) / duration);
+    el.textContent = Math.floor(start + p * (target - start));
+    if (p < 1) requestAnimationFrame(tick);
   }
-  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-    formMessage.textContent = 'Please enter a valid email address.';
-    return;
-  }
-  formMessage.textContent = 'Sending...';
-  setTimeout(() => {
-    formMessage.textContent = 'Thank you for reaching out!';
-    contactForm.reset();
-  }, 1200);
+  requestAnimationFrame(tick);
+}
+window.addEventListener('load', () => {
+  animateCounter('yearsExp', 3);
+  animateCounter('projectsDone', 20);
+  animateCounter('clients', 5);
 });
 
 // Accessibility: focus indicators are handled by CSS
