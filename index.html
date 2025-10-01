@@ -26,6 +26,8 @@
       <div class="logo">My Portfolio</div>
       <ul class="nav-links" id="navLinks">
         <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><button id="darkModeToggle" aria-label="Toggle dark mode"></button></li>
@@ -68,7 +70,7 @@
     <!-- About Section -->
     <section id="about" class="about">
       <div class="about-img">
-        <img src="assets/images/about.jpg" alt="About me" id="aboutImg" />
+        <img src="images/profile.jpg" alt="About me" id="aboutImg" />
       </div>
       <div class="about-info">
         <h2>About Me</h2>
@@ -77,6 +79,12 @@
           <div class="counter"><span id="yearsExp">0</span>+ Years Experience</div>
           <div class="counter"><span id="projectsDone">0</span>+ Projects</div>
           <div class="counter"><span id="clients">0</span>+ Clients</div>
+        </div>
+        <div class="about-highlights">
+          <span class="chip">UI/UX Focused</span>
+          <span class="chip">Responsive Design</span>
+          <span class="chip">Performance Oriented</span>
+          <span class="chip">Accessibility</span>
         </div>
       </div>
     </section>
@@ -101,20 +109,17 @@
       <div class="project-list" id="projectList"></div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section (Social Links) -->
     <section id="contact" class="contact">
       <h2>Contact Me</h2>
-      <form id="contactForm" novalidate>
-        <input type="text" id="name" name="name" placeholder="Your Name" required />
-        <input type="email" id="email" name="email" placeholder="Your Email" required />
-        <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-        <button type="submit">Send</button>
-        <div class="form-message" id="formMessage" aria-live="polite"></div>
-      </form>
-      <div class="contact-info">
-        <p>Email: <a href="mailto:your@email.com" id="contactEmail">your@email.com</a></p>
-        <p>Location: <span id="contactLocation">Your City, Country</span></p>
+      <div class="social-links">
+        <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook"></i><span>Facebook</span></a>
+        <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+        <a href="mailto:youremail@gmail.com" class="social-btn" aria-label="Gmail"><i class="fa-regular fa-envelope"></i><span>Gmail</span></a>
+        <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
+        <a href="#" class="social-btn" aria-label="GitHub"><i class="fab fa-github"></i><span>GitHub</span></a>
       </div>
+      <p class="contact-note">Prefer email? Reach me at <a href="mailto:youremail@gmail.com">youremail@gmail.com</a></p>
     </section>
   </main>
   <!-- Footer -->
