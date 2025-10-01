@@ -140,6 +140,7 @@ body.dark .contact-note { color: #ddd; }
 }
 @media (max-width: 600px) {
   .hero { padding: 2rem 0.5rem; font-size: 0.95rem; }
+  .hero-img { width: 220px; height: 220px; }
   .projects, .contact { padding: 2rem 0.5rem; }
   .navbar { padding: 1rem; }
 }
