@@ -25,12 +25,10 @@ body {
 .hero-socials { display: flex; gap: 1.2rem; margin-bottom: 1.5rem; }
 .hero-socials a { color: #fff; font-size: 1.5rem; transition: color 0.3s; }
 .hero-socials a:hover, .hero-socials a:focus { color: #fc5c7d; }
-.hero-img { position: relative; width: 220px; height: 220px; filter: drop-shadow(0 8px 24px rgba(0,0,0,0.15)); }
-/* New avatar style: animated gradient ring and organic shape */
-.hero-img::before { content: ""; position: absolute; inset: -6px; border-radius: 50%; background: conic-gradient(#6a82fb, #38f9d7, #fc5c7d, #6a82fb); z-index: 0; animation: spin 6s linear infinite; }
-.hero-img::after { content: ""; position: absolute; inset: 6px; border-radius: 50%; background: #fff; z-index: 1; }
-.hero-img img { position: relative; z-index: 2; width: 100%; height: 100%; object-fit: cover; border-radius: 58% 42% 37% 63% / 44% 52% 48% 56%; transition: transform 0.6s ease; }
-.hero-img:hover img { transform: rotate(-2deg) scale(1.02); }
+.hero-img { position: relative; width: 240px; height: 240px; isolation: isolate; }
+/* New avatar style: hexagon mask with gradient halo */
+.hero-img::after { content: ""; position: absolute; inset: -8px; background: linear-gradient(135deg, #6a82fb, #38f9d7, #fc5c7d); clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%); z-index: 0; filter: drop-shadow(0 10px 22px rgba(0,0,0,0.18)); }
+.hero-img img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; clip-path: polygon(25% 6.7%, 75% 6.7%, 100% 50%, 75% 93.3%, 25% 93.3%, 0% 50%); }
 .float-elem { position: absolute; border-radius: 50%; opacity: 0.7; pointer-events: none; animation: float 4s ease-in-out infinite alternate; }
 .fe1 { width: 40px; height: 40px; background: #6a82fb; left: -20px; top: 10px; animation-delay: 0s; }
 .fe2 { width: 28px; height: 28px; background: #fc5c7d; right: -14px; bottom: 20px; animation-delay: 1.2s; }
