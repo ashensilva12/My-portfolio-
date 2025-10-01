@@ -152,9 +152,19 @@ function animateCounter(id, target, duration = 1200) {
   requestAnimationFrame(tick);
 }
 window.addEventListener('load', () => {
-  animateCounter('yearsExp', 3);
-  animateCounter('projectsDone', 20);
-  animateCounter('clients', 5);
+  // Years of experience from data-start-year (default 2022)
+  const yEl = document.getElementById('yearsExp');
+  let yearsTarget = 0;
+  if (yEl) {
+    const start = parseInt(yEl.getAttribute('data-start-year') || '2022', 10);
+    const nowYear = new Date().getFullYear();
+    yearsTarget = Math.max(0, nowYear - start);
+    animateCounter('yearsExp', yearsTarget);
+  }
+
+  // Projects count from projects array
+  const projTarget = Array.isArray(projects) ? projects.length : 0;
+  animateCounter('projectsDone', projTarget);
 });
 
 // Accessibility: focus indicators are handled by CSS
