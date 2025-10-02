@@ -61,6 +61,7 @@ updateDarkModeBtn();
 // Project filtering
 const projects = [
   { title: 'Portfolio Website', category: 'Web', desc: 'A modern responsive portfolio.', img: 'images/portfolio.png', links: [{ url: 'https://ashensilva.netlify.app/', label: 'View' }] },
+   { title: 'Smart Menu and Inventory Management System', category: 'Web', desc: '.', img: 'images/home.png', links: [{ url: 'https://ashensilva.netlify.app/', label: 'View' }] },
 ];
 const categories = ['All', ...new Set(projects.map(p => p.category))];
 const filterButtons = document.getElementById('filterButtons');
