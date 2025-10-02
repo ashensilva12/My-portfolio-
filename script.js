@@ -23,6 +23,7 @@ function setDrawer(open) {
   navOverlay.classList.toggle('active', open);
   hamburger.setAttribute('aria-expanded', open);
   document.body.style.overflow = open ? 'hidden' : '';
+  document.documentElement.style.overflow = open ? 'hidden' : '';
 }
 
 hamburger.addEventListener('click', () => setDrawer(!navLinks.classList.contains('open')));
@@ -37,7 +38,8 @@ navLinks.addEventListener('click', (e) => {
   if (targetEl) {
     e.preventDefault();
     setDrawer(false);
-    smoothScrollTo(targetEl);
+    // Give the browser a moment to remove overlay/lock before scrolling
+    setTimeout(() => smoothScrollTo(targetEl), 60);
   }
 });
 
@@ -49,6 +51,23 @@ window.addEventListener('load', () => {
       setTimeout(() => smoothScrollTo(targetEl), 100);
     }
   }
+});
+
+// Global smooth-scroll for any in-page anchor
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const href = a.getAttribute('href');
+    if (!href || href === '#') return; // ignore empty anchors
+    const id = href.slice(1);
+    const target = document.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+    // Close drawer if it's open
+    if (navLinks.classList.contains('open')) setDrawer(false);
+    setTimeout(() => smoothScrollTo(target), 60);
+    // Update URL hash without jumping
+    history.pushState(null, '', '#' + id);
+  });
 });
 // Close on Escape
 document.addEventListener('keydown', (e) => {
