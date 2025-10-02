@@ -55,6 +55,13 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && navLinks.classList.contains('open')) setDrawer(false);
 });
 
+// Ensure proper state on resize: close drawer and unlock scroll on desktop
+window.addEventListener('resize', () => {
+  if (window.innerWidth >= 900) {
+    setDrawer(false);
+  }
+});
+
 // Scroll indicator
 const scrollIndicator = document.getElementById('scrollIndicator');
 window.addEventListener('scroll', () => {
