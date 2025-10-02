@@ -9,6 +9,14 @@ window.addEventListener('DOMContentLoaded', () => {
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
 const navOverlay = document.getElementById('navOverlay');
+const headerEl = document.querySelector('header');
+
+function smoothScrollTo(targetEl) {
+  if (!targetEl) return;
+  const offset = (headerEl && headerEl.offsetHeight) ? headerEl.offsetHeight + 4 : 70;
+  const y = targetEl.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top: y, behavior: 'smooth' });
+}
 
 function setDrawer(open) {
   navLinks.classList.toggle('open', open);
@@ -29,9 +37,17 @@ navLinks.addEventListener('click', (e) => {
   if (targetEl) {
     e.preventDefault();
     setDrawer(false);
-    // Smooth scroll to section
-    const y = targetEl.getBoundingClientRect().top + window.scrollY - 70; // offset for sticky header
-    window.scrollTo({ top: y, behavior: 'smooth' });
+    smoothScrollTo(targetEl);
+  }
+});
+
+// Handle direct hash navigation on load (with offset)
+window.addEventListener('load', () => {
+  if (location.hash) {
+    const targetEl = document.getElementById(location.hash.slice(1));
+    if (targetEl) {
+      setTimeout(() => smoothScrollTo(targetEl), 100);
+    }
   }
 });
 // Close on Escape
