@@ -22,7 +22,17 @@ hamburger.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === 
 navOverlay.addEventListener('click', () => setDrawer(false));
 // Close drawer when clicking a link
 navLinks.addEventListener('click', (e) => {
-  if (e.target.closest('a')) setDrawer(false);
+  const link = e.target.closest('a[href^="#"]');
+  if (!link) return;
+  const targetId = link.getAttribute('href').slice(1);
+  const targetEl = document.getElementById(targetId);
+  if (targetEl) {
+    e.preventDefault();
+    setDrawer(false);
+    // Smooth scroll to section
+    const y = targetEl.getBoundingClientRect().top + window.scrollY - 70; // offset for sticky header
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
 });
 // Close on Escape
 document.addEventListener('keydown', (e) => {
