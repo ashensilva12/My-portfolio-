@@ -8,12 +8,25 @@ window.addEventListener('DOMContentLoaded', () => {
 // Hamburger menu
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-  hamburger.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+const navOverlay = document.getElementById('navOverlay');
+
+function setDrawer(open) {
+  navLinks.classList.toggle('open', open);
+  navOverlay.classList.toggle('active', open);
+  hamburger.setAttribute('aria-expanded', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+
+hamburger.addEventListener('click', () => setDrawer(!navLinks.classList.contains('open')));
+hamburger.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') hamburger.click(); });
+navOverlay.addEventListener('click', () => setDrawer(false));
+// Close drawer when clicking a link
+navLinks.addEventListener('click', (e) => {
+  if (e.target.closest('a')) setDrawer(false);
 });
-hamburger.addEventListener('keydown', e => {
-  if (e.key === 'Enter' || e.key === ' ') hamburger.click();
+// Close on Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && navLinks.classList.contains('open')) setDrawer(false);
 });
 
 // Scroll indicator
