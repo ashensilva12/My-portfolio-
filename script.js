@@ -81,7 +81,6 @@ window.addEventListener('resize', () => {
   }
 });
 
-// Scroll indicator
 const scrollIndicator = document.getElementById('scrollIndicator');
 window.addEventListener('scroll', () => {
   const scrollTop = window.scrollY;
